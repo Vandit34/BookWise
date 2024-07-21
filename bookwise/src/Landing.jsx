@@ -1,4 +1,3 @@
-import React from 'react'
 import Logo from './assets/BookwiseLogo.png'
 import UploadForm from './components/UploadForm';
 import { useState } from 'react';
