@@ -18,3 +18,23 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 9;
 }
+
+.chakra-accordion {
+    background-color: #ffffff; /* Background Blue */
+  }
+  
+  .chakra-accordion__item {
+    background-color: #5AB2FF; /* Primary Blue */
+    margin-bottom: 1.2rem;
+  }
+  
+  .glass
+  {
+/* From https://css.glass */
+background: rgba(255, 255, 255, 0.48);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(9.9px);
+-webkit-backdrop-filter: blur(9.9px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+  }

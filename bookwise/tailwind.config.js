@@ -9,8 +9,13 @@ export default {
       buttonBg: '#FFF9D0',
       buttonHover: '#FFEBA1',
       primaryBlue: '#5AB2FF',
-      backgroundBlue: '#CAF4FF'
+      backgroundBlue: '#CAF4FF',
+      brightCoral: '#FF6B6B',
+      limeGreen: '#32CD32',
+      hotPink: '#FF69B4',
+      electricPurple: '#A020F0'
     },
+
     fontFamily: {
       Debate: 'Audiowide'
     },
