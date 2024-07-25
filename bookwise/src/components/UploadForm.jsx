@@ -1,8 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { redirect, useNavigate } from 'react-router-dom';
+import { usePdf } from '../context/PdfContext';
 
 const UploadForm = ({ closeModal }) => {
     const [title, setTitle] = useState("");
     const [file, setFile] = useState("");
+    const [pdfId, setPdfId ] = useState();
+    const [chapterArr, setChapterArr ] = useState();
+    // const { ,  } = usePdf();
+    const navigate = useNavigate();
+
+    
+
+    useEffect(() => {
+        console.log("Updated PDF ID:", pdfId);
+    }, [pdfId]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -10,8 +22,9 @@ const UploadForm = ({ closeModal }) => {
         formData.append("title", title);
         formData.append("file", file);
 
+
         try {
-            const response = await fetch('http://localhost:8080/extract-text', {
+            const response = await fetch('http://localhost:8080/pdf/extract-text', {
                 method: "POST",
                 body: formData,
             });
@@ -22,11 +35,19 @@ const UploadForm = ({ closeModal }) => {
 
             const data = await response.json();
             console.log('Stored PDF:', data);
-            closeModal(); // Close the modal on successful upload
+            const id = data.pdfId;
+            console.log(id);
+            setPdfId(id);
+            setChapterArr(data.pythonScriptResponse);
+            
+            closeModal(); 
+            navigate('/takeaways', { state: { pdfId: id, chapterArr: data.pythonScriptResponse } });
+
         } catch (error) {
             console.error('Error uploading file:', error);
         }
     };
+
 
     return (
         <div className="fixed inset-0 z-10 overflow-y-auto">
